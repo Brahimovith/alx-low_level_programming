@@ -1,7 +1,8 @@
 #include <stdio.h>
 /**
  * main -  fonction puts
- * return: success
+ * Description: 'prog puts'
+ * Return: Always 0 (Success)
  */
 int main(void)
 
