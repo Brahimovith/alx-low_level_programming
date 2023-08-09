@@ -1,36 +1,42 @@
 #include "main.h"
-#include <stdio.h>
 #include <stdlib.h>
-
 /**
- * simple_print_buffer - prints buffer in hexa
- * @buffer: the address of memory to print
- * @size: the size of the memory to print
- *
- * Return: Nothing.
+ * str_concat - get ends of input and add together for size
+ * @s1: input one to concat
+ * @s2: input two to concat
+ * Return: concat of s1 and s2
  */
-char *_strdup(char *str)
+char *str_concat(char *s1, char *s2)
 {
-	int i = 1;
-	char *c;
-	int a;
-	while(*str != '\0')
+	char *conct;
+	int i, ci;
+
+	if (s1 == NULL)
+		s1 = "";
+	if (s2 == NULL)
+		s2 = "";
+
+	i = ci = 0;
+	while (s1[i] != '\0')
+		i++;
+	while (s2[ci] != '\0')
+		ci++;
+	conct = malloc(sizeof(char) * (i + ci + 1));
+
+	if (conct == NULL)
+		return (NULL);
+	i = ci = 0;
+	while (s1[i] != '\0')
 	{
-		str++;
+		conct[i] = s1[i];
 		i++;
 	}
-	c = malloc(i * sizeof(char));
-	if(str == NULL || c == NULL)
+
+	while (s2[ci] != '\0')
 	{
-		return (NULL);
+		conct[i] = s2[ci];
+		i++, ci++;
 	}
-	else
-	{
-		for (a = 0; a < i; a++)
-		{
-			c[a] = str[a];
-		}
-		return (c);
-	}
-	free(c);
+	conct[i] = '\0';
+	return (conct);
 }
